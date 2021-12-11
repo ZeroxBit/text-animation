@@ -9,16 +9,17 @@ body {
     font-family: 'Roboto Condensed', sans-serif;
 }
 
-.container {
+.container, .container-typing {
     background-color: #3f4449;
     width: 100%;
-    height: 100vh;
+    height: 50vh;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
 }
 
+/* =========== text fill animation ============== */
 .title {
     text-transform: uppercase;
     position: relative;
@@ -39,14 +40,74 @@ body {
     -webkit-text-stroke: 0vw #1e1f1fd2;
     border-right: 4px solid #8a2de0;
     overflow: hidden;
-    animation: animate 7s linear infinite;
+    animation: animate-fill 7s linear infinite;
 }
 
-@keyframes animate {
+@keyframes animate-fill {
     0%,10%,100% {
         width: 0;
     }
     70%, 90% {
         width: 100%;
+    }
+}
+
+/* ================== typing text animation ================= */
+/* // active color: #55B03F */
+.container-typing {
+    align-items: flex-start;
+}
+
+.title-typing {
+    font-size: 3.7em;
+    color: blanchedalmond;
+    margin-right: .4em;
+}
+
+.list-text {
+    color: #55B03F;   
+    height: 72px;
+    line-height: 72px;
+    overflow: hidden;
+}
+
+.list-text li {
+    list-style: none;
+    position: relative;
+    font-size: 60px;
+    top: 0;
+    transition: all ease;
+    animation: slide 12s steps(4) infinite;
+}
+
+@keyframes slide {
+    100% {
+        top: -288px;
+    }
+}
+
+.list-text li span {
+    position: relative;
+    width: 100%;
+}
+
+.list-text li span::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    border-left: 3px solid #55B03F;
+    position: absolute;
+    left: 0;
+    background-color: #3f4449;
+    animation: typing 3s steps(10) infinite;
+}
+
+@keyframes typing {
+    0%, 100% {
+        left: 0;
+    }
+    90% {
+        left: 100%;
+        margin: 0 -35px 0 25px;
     }
 }
